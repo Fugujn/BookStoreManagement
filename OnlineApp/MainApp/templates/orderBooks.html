@@ -38,7 +38,6 @@
                                     {{ order.initiated_date.strftime('%Y-%m-%d') }}
                                 </td>
                                 <td>{{ order.cancel_date.strftime('%Y-%m-%d') }}</td>
-                                <td>{{ order.payment_method.name }}</td>
                                 <td>{{ "{:,.0f}".format(order.total_payment) }} VNĐ</td>
                                 <td>{{ order.delivery_at }}</td>
                                 <td>
@@ -47,10 +46,6 @@
                                 </td>
                                 <td>
                                     {% if order.cancel_date > datetime.now() and order.paid_date is none and order.payment_method.name == "BANKING" %}
-                                        <a href="{{ url_for("orders.process_vnpay", order_id=order.id, user_id = current_user.id) }}"
-                                           class="btn btn-primary btn-xs" role="button">
-                                            Pay
-                                        </a>
                                     {% else %}
                                         <a href="#" class="btn btn-secondary btn-xs disabled" role="button">
                                             Pay

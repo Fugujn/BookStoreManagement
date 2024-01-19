@@ -46,8 +46,6 @@ def login():
             return redirect(url_for(request.args.get('next', 'index'), book_id=request.args['book_id']))
         next_page = request.args.get('next')
         return redirect(next_page) if next_page else redirect(url_for('main.home'))
-    else:
-        flash(f'Login Unsuccessful. Please check email and password', 'danger')
     return render_template("login.html", title='Login', form=form)
 
 
